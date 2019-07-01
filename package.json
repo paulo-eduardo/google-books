@@ -1,0 +1,22 @@
+{
+  "name": "google-books",
+  "version": "1.0.0",
+  "description": "Api to list and manage books from google books api",
+  "main": "index.js",
+  "repository": "git@github.com:Paulo-Eduardo/google-books.git",
+  "author": "Paulo Eduardo <paulo.es@live.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "devDependencies": {
+    "eslint": "^6.0.1",
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.2",
+    "morgan": "^1.9.1"
+  }
+}
