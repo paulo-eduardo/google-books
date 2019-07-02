@@ -4,6 +4,10 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const morgan = require("morgan");
 
+mongoose.connect("mongodb://mongodb:27017/booksdocker", {
+  useNewUrlParser: true
+});
+
 const app = express();
 
 app.use(morgan("combined"));
