@@ -5,7 +5,8 @@ const VoteSchema = new mongoose.Schema({
     type: String,
     unique: true
   },
-  vote: Number
+  vote: Number,
+  title: String
 })
 
 module.exports = mongoose.model('Vote', VoteSchema)
