@@ -33,8 +33,10 @@ module.exports = {
 
       if (vote) {
         vote.vote += action === 2 ? 1 : -1
-        await vote.save()
-        return res.sendStatus(200)
+        vote
+          .save()
+          .then(() => res.sendStatus(200))
+          .catch(err => res.status(500).json({ err: err }))
       }
 
       request(
@@ -47,7 +49,7 @@ module.exports = {
 
           await Votes.create({
             id: req.params.id,
-            vote: action === 2 ? 1 : -1,
+            vote: action === 2 ? 1 : 0,
             title: book.volumeInfo.title
           })
           return res.sendStatus(200)

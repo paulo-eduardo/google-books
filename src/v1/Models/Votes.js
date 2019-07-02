@@ -5,7 +5,10 @@ const VoteSchema = new mongoose.Schema({
     type: String,
     unique: true
   },
-  vote: Number,
+  vote: {
+    type: Number,
+    min: [0, 'vote cant be less then 0']
+  },
   title: String
 })
 
