@@ -1,10 +1,12 @@
 var request = require('request')
 var Votes = require('../Models/Votes')
 
+const GOOGLE_API = process.env.GOOGLE_API
+
 module.exports = {
   index (req, res) {
     request(
-      'https://www.googleapis.com/books/v1/volumes?q=react&key=AIzaSyDngLUVp-CMMAVGuqTLKcjfodmgDi160sI',
+      `https://www.googleapis.com/books/v1/volumes?q=react&key=${GOOGLE_API}`,
       function (error, response, body) {
         if (error) return res.status(500).json(error)
         const library = JSON.parse(body)
@@ -38,7 +40,7 @@ module.exports = {
       request(
         `https://www.googleapis.com/books/v1/volumes/${
           req.params.id
-        }?q=react&key=AIzaSyDngLUVp-CMMAVGuqTLKcjfodmgDi160sI`,
+        }?q=react&key=${GOOGLE_API}`,
         async (error, response, body) => {
           if (error) return res.status(500).json(error)
           const book = JSON.parse(body)

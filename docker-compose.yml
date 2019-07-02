@@ -27,6 +27,7 @@ services:
     environment:
       MONGO_URI: mongodb://db:27017/books
       REDIS_URI: redis://redis:6379
+      GOOGLE_API:
     links:
       - redis
       - db
