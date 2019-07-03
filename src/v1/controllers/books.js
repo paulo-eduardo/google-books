@@ -51,7 +51,7 @@ module.exports = {
 
           await Votes.create({
             id: req.params.id,
-            vote: action === 2 ? 1 : 0,
+            vote: action === 1 ? 1 : 0,
             title: book.volumeInfo.title
           })
           return res.sendStatus(200)
