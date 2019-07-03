@@ -38,7 +38,7 @@ module.exports = {
         vote
           .save()
           .then(() => res.sendStatus(201))
-          .catch(err => res.status(500).json({ err: err }))
+          .catch(() => res.sendStatus(201))
       }
 
       request(
