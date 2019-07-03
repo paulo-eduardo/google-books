@@ -4,12 +4,14 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
 
-console.log(process.env.MONGO_URI)
+const MONGO_URI =
+  process.env.MONGO_URI ||
+  'mongodb+srv://admin:admin@cluster0-9xgsw.mongodb.net/test?retryWrites=true&w=majority'
 
 const connectWithRetry = () => {
   console.log('MongoDB connection with retry')
   mongoose
-    .connect(process.env.MONGO_URI, {
+    .connect(MONGO_URI, {
       useNewUrlParser: true
     })
     .then(() => {

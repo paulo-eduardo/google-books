@@ -1,10 +1,13 @@
-# Very Useful Tools.
+# Google books
 
 ### Objective
 
 - Manage books from google api and vote them
 
 ### Running
+
+- Without Docker:
+  - just run `yarn` and `yarn dev`
 
 Create an .env file with an GOOGLE_API var with google books api key
 

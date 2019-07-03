@@ -1,7 +1,9 @@
 var request = require('request')
 var Votes = require('../Models/Votes')
 
-const GOOGLE_API = process.env.GOOGLE_API
+// Exposing google api key so we can run it outside docker
+const GOOGLE_API =
+  process.env.GOOGLE_API || 'AIzaSyDngLUVp-CMMAVGuqTLKcjfodmgDi160sI'
 
 module.exports = {
   index (req, res) {
@@ -32,10 +34,10 @@ module.exports = {
       if (err) return res.status(500).json({ error: err })
 
       if (vote) {
-        vote.vote += action === 2 ? 1 : -1
+        vote.vote += action === 1 ? 1 : -1
         vote
           .save()
-          .then(() => res.sendStatus(200))
+          .then(() => res.sendStatus(201))
           .catch(err => res.status(500).json({ err: err }))
       }
 
@@ -59,6 +61,12 @@ module.exports = {
   },
 
   listVotes (req, res) {
+    const { type } = req.query
+
+    if (type !== 'top-ten') {
+      return res.sendStatus(404)
+    }
+
     Votes.find({})
       .sort({ vote: -1 })
       .limit(10)
